@@ -1,0 +1,153 @@
+<nav class="navbar navbar-dark bg-primary" >
+  <div class="container-fluid">
+      <span class="navbar-text">
+        MANAGE PLANTS
+      </span>
+      <button type="button" class="btn btn-warning" (click)="back()">back</button>
+    </div>
+</nav>
+<nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <button class="btn btn-outline-success" (click)="viewall()">Viewall</button>
+      
+        <input placeholder="Enter plantId"  [(ngModel)]="id">
+        <button class="btn btn-outline-success" (click)="viewPlantById()">view By PlantId</button>
+        &nbsp;
+        <input placeholder="Enter commonName"  [(ngModel)]="commonName">
+        <button class="btn btn-outline-success" (click)="viewPlantByCommonName()">view By CommonName</button>
+        &nbsp;
+        <input placeholder="Enter typeOfPlant"  [(ngModel)]="type">
+        <button class="btn btn-outline-success" (click)="viewPlantBytype()">View By typeOfPlant</button>
+      
+    </div>
+  </nav>
+
+  <br> 
+
+<table  class="table table-bordered" *ngIf="tableshow">
+  
+    
+    <tr>
+        <td>Id</td>
+        <td>Height</td>
+        <td>Spread</td>
+        <td>commonName</td>
+        <td>bloomTime</td>
+        <td>Use</td>
+        <td>difficultyLevel</td>
+        <td>temperature</td>
+        <td>typeOfPlant</td>
+        <td>Description</td>
+        <td>Stock</td>
+        <td>Cost</td>
+    </tr>
+    <tr *ngFor="let p of plants">
+        <td>{{p.plantId}}</td>
+        <td>{{p.plantHeight}}</td>
+        <td>{{p.plantSpread}}</td>
+        <td>{{p.commonName}}</td>
+        <td>{{p.bloomTime}}</td>
+        <td>{{p.medicinalOrCulinaryUse}}</td>
+        <td>{{p.difficultyLevel}}</td>
+        <td>{{p.temperature}}</td>
+        <td>{{p.typeOfPlant}}</td>
+        <td>{{p.plantDescription}}</td>
+        <td>{{p.plantsStock}}</td>
+        <td>{{p.plantCost}}</td>
+        
+        <td><button type="button" class="bg-danger" (click)="deletePlant(p.plantId)">Delete</button></td>
+        <td><button type="button" class="bg-warning" (click)="modify(p)">Modify</button></td>
+
+
+    </tr>
+    
+  </table>
+
+  <br>
+
+  <button *ngIf="!check" (click)="add()">Add Plant</button>
+
+  
+
+
+
+<div class="container" >
+
+  <h1 *ngIf="check">Add New Plant</h1>
+  <h1 *ngIf="!check">Modify plant</h1>
+
+   
+
+    <br>  
+
+  <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">plantHeight :</label>
+      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter plantHeight" [(ngModel)]="plant.plantHeight" >
+    
+      
+    </div>
+
+  <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">plantSpread :</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter plantSpread" [(ngModel)]="plant.plantSpread">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">commonName :</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter commonName" [(ngModel)]="plant.commonName">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">bloomTime :</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter bloomTime" [(ngModel)]="plant.bloomTime">
+    </div>
+
+    
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">medicinalOrCulinaryUse</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter medicinalOrCulinaryUse" [(ngModel)]="plant.medicinalOrCulinaryUse">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">difficultyLevel</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter difficultyLevel" [(ngModel)]="plant.difficultyLevel">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">temperature</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter temperature" [(ngModel)]="plant.temperature">
+    </div>
+
+    
+
+      <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">typeOfPlant</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter typeOfPlant"
+          [(ngModel)]="plant.typeOfPlant">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">plantDescription</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Plantdescription" [(ngModel)]="plant.plantDescription">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Plantstock</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Plantstock"
+          [(ngModel)]="plant.plantsStock">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Plantcost</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Plantcost"
+          [(ngModel)]="plant.plantCost">
+        </div>
+        
+
+        <br>
+        <br>
+        <button *ngIf="check" type="button" class="btn btn-primary" (click)="addPlant()">Add Plant</button>
+        <button *ngIf="!check" type="button" class="btn btn-primary" (click)="modPlant()">Modify</button>
+        <br><br><br>
+
+</div>
+
+

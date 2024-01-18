@@ -1,0 +1,267 @@
+<nav class="navbar navbar-dark bg-primary" >
+  <div class="container-fluid">
+      <span class="navbar-text">
+        MANAGE PLANTERS
+      </span>
+      <button type="button" class="btn btn-warning" (click)="back()">back</button>
+    </div>
+</nav>
+
+
+<!-- <nav class="navbar navbar-light bg-light"> -->
+    <div class="container">
+      <br>
+      <button class="btn btn-outline-success" (click)="viewall()">Viewall</button> <br>
+      <button class="btn btn-outline-success" (click)="viewPlanterById()">view By PlanterId</button> &nbsp; 
+        <input placeholder="Enter plantId"  [(ngModel)]="id" size="10">
+        
+        <br>
+        <button class="btn btn-outline-success" (click)="viewPlanterByShape()">view By PlanterShape</button> &nbsp;
+        <input placeholder="Enter planterShape"  [(ngModel)]="planterShape">
+        
+        <br>
+      
+    <!-- </nav> -->
+    <button class="btn btn-outline-success" (click)="viewPlanterByRange()">ViewPlanters within the price range</button> &nbsp;
+        <input placeholder="minCost"  [(ngModel)]="minCost" size="5">&nbsp;
+        <input placeholder="maxCost"  [(ngModel)]="maxCost" size="5">
+        
+      </div>
+    
+
+  <br> <br>
+
+<table border="2" class="table table-bordered" *ngIf="showtable">
+    
+    <tr>
+        
+        <td>planterId</td>
+	<td>planterheight</td>
+	<td>planterCapacity</td>
+	<td>drinageHoles</td>
+	<td>planterColor</td>
+	<td>planterShape</td>
+	<td>planterStock</td>
+	 <td>planterCost</td>
+     
+    </tr>
+    <tr *ngFor="let p of planters">
+        <td>{{p.planterId}}</td>
+        <td>{{p.planterheight}}</td>
+        <td>{{p.planterCapacity}}</td>
+        <td>{{p.drinageHoles}}</td>
+        <td>{{p.planterColor}}</td>
+        <td>{{p.planterShape}}</td>
+        <td>{{p.planterStock}}</td>
+        <td>{{p.planterCost}}</td>
+        
+        <td><button type="button" class="bg-primary" (click)="showdetails(p)">Select</button></td>
+        <td><button type="button" class="bg-danger" (click)="deletePlanter(p.planterId)">Delete</button></td>
+        <td><button type="button" class="bg-warning" (click)="modify(p)">Modify</button></td>
+
+
+    </tr>
+    
+  </table>
+
+  <br>
+
+  <button *ngIf="!check1" (click)="add()">Add New Planter</button>
+
+  
+
+
+
+<div class="container" >
+
+  <h1 *ngIf="check1">Add New Planter</h1>
+  <h1 *ngIf="check2">Modify planter</h1>
+  <h1 *ngIf="check3">Planter complete Details</h1>
+
+   
+
+    <br>  
+
+  <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">planterheight :</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter plantHeight" [(ngModel)]="planter.planterheight">
+    </div>
+
+  <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">planterCapacity :</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter plantSpread" [(ngModel)]="planter.planterCapacity">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">drinageHoles :</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter commonName" [(ngModel)]="planter.drinageHoles">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">planterColor :</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter bloomTime" [(ngModel)]="planter.planterColor">
+    </div>
+
+    
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">planterShape :</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter medicinalOrCulinaryUse" [(ngModel)]="planter.planterShape">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">planterStock :</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter difficulty" [(ngModel)]="planter.planterStock">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">planterCost :</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter temperature" [(ngModel)]="planter.planterCost">
+    </div>
+
+    <div *ngIf="!check1">
+      <label class="form-label">select plants you want to add to planter</label>
+      <table class="table table-bordered border-primary container-fluid">
+    
+        <tr>
+          <td>select</td>
+            <td>plantId</td>
+            <td>plantHeight</td>
+            <td>plantSpread</td>
+            <td>commonName</td>
+            <td>bloomTime</td>
+            <td>medicinalOrCulinaryUse</td>
+            <td>difficultyLevel</td>
+            <td>temperature</td>
+            <td>typeOfPlant</td>
+            <td>plantDescription</td>
+            <td>plantsStock</td>
+            <td>plantCost</td>
+        </tr>
+        <tr *ngFor="let p of plants">
+          <td> <input type="checkbox" class="form-check-input"  (click)="addtoplantlist(p)"></td>
+            <td>{{p.plantId}}</td>
+            <td>{{p.plantHeight}}</td>
+            <td>{{p.plantSpread}}</td>
+            <td>{{p.commonName}}</td>
+            <td>{{p.bloomTime}}</td>
+            <td>{{p.medicinalOrCulinaryUse}}</td>
+            <td>{{p.difficultyLevel}}</td>
+            <td>{{p.temperature}}</td>
+            <td>{{p.typeOfPlant}}</td>
+            <td>{{p.plantDescription}}</td>
+            <td>{{p.plantsStock}}</td>
+            <td>{{p.plantCost}}</td>
+            <!-- <td><button type="button" class="bg-primary">Select</button></td> -->
+            <td><button type="button" class="bg-danger" >Delete</button></td>
+            <td><button type="button" class="bg-warning" >Modify</button></td>
+    
+    
+        </tr>
+        
+      </table>
+    
+      
+    </div>
+
+    <!-- <div>
+      <label  class="form-label">plants in this planter</label>
+      <table border="2" class="table table-bordered border-primary container-fluid">
+    
+        <tr>
+            <td>plantId</td>
+            <td>plantHeight</td>
+            <td>plantSpread</td>
+            <td>commonName</td>
+            <td>bloomTime</td>
+            <td>medicinalOrCulinaryUse</td>
+            <td>difficultyLevel</td>
+            <td>temperature</td>
+            <td>typeOfPlant</td>
+            <td>plantDescription</td>
+            <td>plantsStock</td>
+            <td>plantCost</td>
+        </tr>
+        <tr *ngFor="let p of planter">
+            <td>{{p.plantId}}</td>
+            <td>{{p.plantHeight}}</td>
+            <td>{{p.plantSpread}}</td>
+            <td>{{p.commonName}}</td>
+            <td>{{p.bloomTime}}</td>
+            <td>{{p.medicinalOrCulinaryUse}}</td>
+            <td>{{p.difficultyLevel}}</td>
+            <td>{{p.temperature}}</td>
+            <td>{{p.typeOfPlant}}</td>
+            <td>{{p.plantDescription}}</td>
+            <td>{{p.plantsStock}}</td>
+            <td>{{p.plantCost}}</td>
+            <td><button type="button" class="bg-primary">Select</button></td>
+            <td><button type="button" class="bg-danger" (click)="deletePlant(p.plantId)">Delete</button></td>
+            <td><button type="button" class="bg-warning" (click)="modify(p)">Modify</button></td>
+    
+    
+        </tr>
+        
+      </table>
+    
+    </div> -->
+
+    <div *ngIf="!check1">
+      <label class="form-label">select seeds you want to add to planter</label>
+      <table border="2" class="table table-bordered border-primary container-fluid">
+    
+        <tr>
+          <td>select</td>
+          <td>seedId</td>
+          <td>commonName</td>
+          <td>bloomTime</td>
+          <td>watering</td>
+          <td>difficultyLevel</td>
+          <td>temperature</td>
+          <td>typeOfSeeds</td>
+          <td>SeedsDescription</td>
+          <td>seedsStock</td>
+          <td>seedsCost</td>
+          <td>seedsPerPacket</td>
+      </tr>
+      <tr *ngFor="let p of seeds">
+        <td> <input type="checkbox" class="form-check-input"  (click)="addtoseedlist(p)"></td>
+          <td>{{p.seedId}}</td>
+          <td>{{p.commonName}}</td>
+          <td>{{p.bloomTime}}</td>
+          <td>{{p.watering}}</td>
+          <td>{{p.difficultyLevel}}</td>
+          <td>{{p.temperature}}</td>
+          <td>{{p.typeOfSeeds}}</td>
+          <td>{{p.seedsDescription}}</td>
+          <td>{{p.seedsStock}}</td>
+          <td>{{p.seedsCost}}</td>
+          <td>{{p.seedsPerPacket}}</td>
+         
+          <td><button type="button" class="bg-danger" >Delete</button></td>
+          <td><button type="button" class="bg-warning" >Modify</button></td>
+  
+  
+      </tr>
+      
+    </table>
+    
+      
+    </div>
+
+
+
+    
+
+     
+
+        <br>
+        <br>
+        <button  type="button" class="btn btn-primary" (click)="addPlanter()" *ngIf="check1">Add Planter</button>
+        <button  type="button" class="btn btn-primary" (click)="modPlanter()" *ngIf="check2">Modify</button>
+        <br><br><br>
+
+</div>
+
+
+

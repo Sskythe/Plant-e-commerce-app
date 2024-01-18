@@ -1,0 +1,93 @@
+<div style="background-image:url('/assets/masaaki-komori-Z8TQv3yKQd4-unsplash.jpg');height:740px; opacity: 0.5px;" >
+<nav class="navbar navbar-dark bg-primary" >
+  <div class="container-fluid">
+      <span class="navbar-text">
+        MANAGE ORDERS
+      </span>
+      <button type="button" class="btn btn-warning" (click)="back()">back</button>
+    </div>
+</nav>
+<br>
+    <div class="container">
+      <button class="btn btn-outline-success" (click)="viewall()">Viewall</button>
+      <br>
+      <button class="btn btn-outline-success" (click)="viewOrderById()">view By OrderId</button>
+      &nbsp; &nbsp;
+        <input placeholder="customerId"  [(ngModel)]="id">
+        
+     
+    </div>
+  
+  
+  <br> <br>
+  
+  <table  class="table table-bordered border-primary container-fluid">
+    
+    <tr>
+        <td>order id</td>
+        <td>order Date</td>
+        <td>Mode</td>
+        <td>quantity</td>
+        <td>cost</td>
+      
+    </tr>
+    <tr *ngFor="let p of orders">
+        <td>{{p.bookingOrderId}}</td>
+        <td>{{p.OrderDate}}</td>
+        <td>{{p.transactionMode}}</td>
+        <td>{{p.quantity}}</td>
+        <td>{{p.totalCost}}</td>
+       
+        
+        <td><button type="button" class="bg-primary" (click)="details(p)">Select</button></td>
+        <td><button type="button" class="bg-danger" (click)="deleteOrder(p.bookingOrderId)">Delete</button></td>
+        
+  
+  
+    </tr>
+    
+  </table>
+
+
+  <div *ngIf="showdata">
+    <br>
+    <h1>the planters associated with this order are:</h1>
+
+    <table class="table table-bordered border-primary container-fluid">
+     
+    <tr>
+        
+      <td>planterId</td>
+<td>planterheight</td>
+<td>planterCapacity</td>
+<td>drinageHoles</td>
+<td>planterColor</td>
+<td>planterShape</td>
+<td>planterStock</td>
+ <td>planterCost</td>
+   
+  </tr>
+  <tr *ngFor="let p of detail">
+      <td>{{p.planterId}}</td>
+      <td>{{p.planterheight}}</td>
+      <td>{{p.planterCapacity}}</td>
+      <td>{{p.drinageHoles}}</td>
+      <td>{{p.planterColor}}</td>
+      <td>{{p.planterShape}}</td>
+      <td>{{p.planterStock}}</td>
+      <td>{{p.planterCost}}</td>
+      
+      
+
+
+  </tr>
+    </table>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+</div>

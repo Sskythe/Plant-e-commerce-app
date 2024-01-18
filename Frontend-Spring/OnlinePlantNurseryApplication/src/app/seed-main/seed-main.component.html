@@ -1,0 +1,142 @@
+<nav class="navbar navbar-dark bg-primary" >
+  <div class="container-fluid">
+      <span class="navbar-text">
+        MANAGE SEEDS
+      </span>
+      <button type="button" class="btn btn-warning" (click)="back()">back</button>
+    </div>
+</nav>
+
+<nav class="navbar navbar-light bg-light">
+    <div class="container">
+      <button class="btn btn-outline-success" (click)="viewall()">ViewallSeeds</button>
+      
+        <input placeholder="Enter SeedId"  [(ngModel)]="id">
+        <button class="btn btn-outline-success" (click)="viewSeedById()">view By seedId</button>
+        &nbsp;
+        <input placeholder="Enter commonName"  [(ngModel)]="commonName">
+        <button class="btn btn-outline-success" (click)="viewSeedByCommonName()">view By CommonName</button>
+        &nbsp;
+        <input placeholder="Enter typeOfPlant"  [(ngModel)]="type">
+        <button class="btn btn-outline-success" (click)="viewSeedBytype()">View By typeOfSeeds</button>
+      
+    </div>
+  </nav>
+
+  <br> <br>
+
+<table  class="table table-bordered" *ngIf="tableshow">
+    
+    <tr>
+        <td>Id</td>
+        <td>commonName</td>
+        <td>bloomTime</td>
+        <td>watering</td>
+        <td>difficultyLevel</td>
+        <td>temperature</td>
+        <td>typeOfSeeds</td>
+        <td>Description</td>
+        <td>Stock</td>
+        <td>Cost</td>
+        <td>seedsPerPacket</td>
+    </tr>
+    <tr *ngFor="let p of seeds">
+        <td>{{p.seedId}}</td>
+        <td>{{p.commonName}}</td>
+        <td>{{p.bloomTime}}</td>
+        <td>{{p.watering}}</td>
+        <td>{{p.difficultyLevel}}</td>
+        <td>{{p.temperature}}</td>
+        <td>{{p.typeOfSeeds}}</td>
+        <td>{{p.seedsDescription}}</td>
+        <td>{{p.seedsStock}}</td>
+        <td>{{p.seedsCost}}</td>
+        <td>{{p.seedsPerPacket}}</td>
+       
+        <td><button type="button" class="bg-danger" (click)="deleteSeed(p.seedId)">Delete</button></td>
+        <td><button type="button" class="bg-warning" (click)="modify(p)">Modify</button></td>
+
+
+    </tr>
+    
+  </table>
+
+  <br>
+
+  <button *ngIf="!check" (click)="add()">Add Seed</button>
+
+  
+
+
+
+<div class="container" >
+
+  <h1 *ngIf="check">Add New Seed</h1>
+  <h1 *ngIf="!check">Modify Seed</h1>
+
+   
+
+    <br>  
+
+  <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">commonName:</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter commonName" [(ngModel)]="seed.commonName">
+    </div>
+
+  <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">bloomTime :</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter bloomTime" [(ngModel)]="seed.bloomTime">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">watering :</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter watering" [(ngModel)]="seed.watering">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">difficultyLevel :</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter difficultyLevel" [(ngModel)]="seed.difficultyLevel">
+    </div>
+
+    
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">temperature :</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter temperature" [(ngModel)]="seed.temperature">
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">typeOfSeeds :</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter typeOfSeeds" [(ngModel)]="seed.typeOfSeeds">
+    </div>
+
+   
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">seedsDescription :</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="description" [(ngModel)]="seed.seedsDescription">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">seedsStock :</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="stock"
+          [(ngModel)]="seed.seedsStock">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">seedsCost :</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="cost"
+          [(ngModel)]="seed.seedsCost">
+        </div>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">seedsPerPacket :</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="enter seedsPerPacket"
+          [(ngModel)]="seed.seedsPerPacket">
+        </div>
+
+        <br>
+        <br>
+        <button *ngIf="check" type="button" class="btn btn-primary" (click)="addSeed()">Add Seed</button>
+        <button *ngIf="!check" type="button" class="btn btn-primary" (click)="modSeed()">Modify</button>
+        <br><br><br>
+
+</div>
+
+

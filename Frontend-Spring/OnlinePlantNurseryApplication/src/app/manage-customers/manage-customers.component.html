@@ -1,0 +1,75 @@
+<div style="background-image:url('/assets/masaaki-komori-Z8TQv3yKQd4-unsplash.jpg');height:740px; opacity: 0.5px;" >
+
+<nav class="navbar navbar-dark bg-primary" >
+  <div class="container-fluid">
+      <span class="navbar-text">
+        MANAGE CUSTOMERS
+      </span>
+      <button type="button" class="btn btn-warning" (click)="back()">back</button>
+    </div>
+</nav>
+<br>
+
+    <div class="container">
+      <button class="btn btn-outline-success" (click)="viewall()">Viewall</button> 
+      <br>
+      <button class="btn btn-outline-success" (click)="viewCustomerById()">view By CustomerId</button>
+      &nbsp; &nbsp;
+        <input placeholder="customerId"  [(ngModel)]="id">
+        
+     
+    </div>
+ 
+
+  <br> <br>
+
+<table border="2" class="table table-bordered border-primary container-fluid">
+    
+    <tr>
+        <td>customerId</td>
+        <td>customerName</td>
+        <td>customerEmail</td>
+        <td>username</td>
+        <td>password</td>
+       <td>addressId</td> 
+
+       <td>houseNo</td> 
+    
+       <td>colony</td> 
+    
+       <td>city</td> 
+    
+       <td>state</td>
+        
+        <td>pincode</td>
+    </tr>
+    <tr *ngFor="let p of customers">
+        <td>{{p.customerId}}</td>
+        <td>{{p.customerName}}</td>
+        <td>{{p.customerEmail}}</td>
+        <td>{{p.username}}</td>
+        <td>{{p.password}}</td>
+        <td>{{p.address.addressId}}</td>
+        <td>{{p.address.houseNo}}</td>
+        <td>{{p.address.colony}}</td>
+        <td>{{p.address.city}}</td>
+        <td>{{p.address.state}}</td>
+        <td>{{p.address.pincode}}</td>
+        
+        
+        <td><button type="button" class="bg-danger" (click)="deleteCustomer(p.customerId)">Delete</button></td>
+        
+
+
+    </tr>
+    
+  </table>
+
+</div>
+
+ 
+
+ 
+
+
+

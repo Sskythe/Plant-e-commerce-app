@@ -1,0 +1,42 @@
+<!-- <div style="background-image:url('/assets/customer-main.jpg');height: 700px; opacity: 0.5px;" > -->
+
+
+    <nav class="navbar navbar-dark bg-primary" >
+        <div class="container-fluid">
+            <span class="navbar-text">
+              WELCOME {{customermain.customerName}}
+            </span>
+            <button type="button" class="btn btn-warning" (click)="logout()">LOG-OUT</button>
+          </div>
+      </nav>
+
+      <br>  <br>
+
+
+      <div class="container">
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;" >
+          <div class="container-fluid">
+              <span class="navbar-text">
+                <a [routerLink]="['/orderCustomer']">Manage Your Orders</a>
+              </span>
+            </div>
+        </nav>
+        <br>
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;" >
+          <div class="container-fluid">
+              <span class="navbar-text">
+                <a [routerLink]="['/modifyuser']">Edit your profile/details</a>
+              </span>
+            </div>
+        </nav>
+        
+       
+      </div>
+
+      <!-- </div> -->
+    
+   
+    <router-outlet>
+    
+    </router-outlet>
+    

@@ -1,0 +1,67 @@
+
+
+<div class="container">
+
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+      <form class="form-inline">
+        <h1 >Modify Customer</h1>
+        
+      </form>
+    </nav>
+  
+      <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">CustomerName</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter you name" [(ngModel)]="customer.customerName">
+        </div>
+  
+      <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">CustomerEmail</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" [(ngModel)]="customer.customerEmail">
+        </div>
+  
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">UserName</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="UserName" [(ngModel)]="customer.username">
+        </div>
+  
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Password</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="password" [(ngModel)]="customer.password">
+        </div>
+  
+        
+  
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">HouseNumber</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Housenumber" [(ngModel)]="customer.address.houseNo">
+        </div>
+  
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Colony</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter Colony" [(ngModel)]="customer.address.colony">
+        </div>
+  
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">City</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter City" [(ngModel)]="customer.address.city">
+        </div>
+  
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">State</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="password" [(ngModel)]="customer.address.state">
+        </div>
+  
+        
+  
+          <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Pincode</label>
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="password" [(ngModel)]="customer.address.pincode">
+            </div>
+  
+            <br>
+            <br>
+            <button type="button" class="btn btn-primary" (click)="modcustomer()">Modify Customer</button>
+            <br><br><br>
+  
+  </div>
+  

@@ -1,0 +1,52 @@
+
+<div style="background-image:url('assets/home.jpg');height:740px; opacity: 0.5px;" >
+<nav class="navbar navbar-light" style="background-color:#d9d9d9;">
+    <form class="form-inline">
+      <h1>Online Plant Nursery Application</h1>
+      
+    </form>
+  </nav>
+  
+  
+  <div class="login-form">
+    <form #userForm="ngForm">
+        <h2 class="text-center">Log in</h2>       
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Username" required [(ngModel)]="UserName" name="UserName" #name="ngModel" [class.is-invalid]="name.invalid && name.touched">
+            <small class="text-danger" [class.d-none]="name.valid||name.untouched">username is required</small>
+        </div>
+        
+        <br>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" required [(ngModel)]="Password" name="Password" #nae="ngModel" [class.is-invalid]="name.invalid && name.touched">
+            <small class="text-danger" [class.d-none]="nae.valid||nae.untouched">password is required</small>
+        </div>
+        <br>
+        <div class="form-group">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" (click)="myfun()">
+          <label class="form-check-label" for="exampleCheck1">Login as admin</label>
+        </div>
+        <br>
+        <div class="form-group" *ngIf="!checkadmin">
+            <button type="submit" class="btn btn-primary btn-block" (click)="loginCustomer()">Log in Customer</button>
+            <!-- <input type="submit"/>Log in Customer -->
+        </div>
+        <div class="form-group" *ngIf="checkadmin">
+          <button type="submit" class="btn btn-primary btn-block" (click)="loginadmin()">Log in Admin</button>
+      </div>
+        <br>
+        
+    </form>
+    <p class="text-center" *ngIf="!checkadmin">
+      <a [routerLink]="['/newUser']">If new Customer, Sign Up!!</a></p>
+  </div>
+
+  </div>
+
+  <!-- <router-outlet>
+
+  </router-outlet> -->
+
+
+  
+  
